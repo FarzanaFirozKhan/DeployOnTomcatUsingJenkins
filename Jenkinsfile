@@ -9,7 +9,7 @@ pipeline {
     
     environment {
         // Define environment variables for Tomcat
-        WAR_FILE = 'target/rps.war' // Path to the generated WAR file
+        WAR_FILE = 'target/roshambo.war' // Path to the generated WAR file
         TOMCAT_URL = 'http://localhost:7080' // Tomcat server URL
         TOMCAT_USER = 'war-deployer' // Tomcat Manager username
         TOMCAT_PASSWORD = 'maven-tomcat' // Tomcat Manager password
@@ -34,7 +34,6 @@ pipeline {
             steps {
                 script {
                     def warFilePath = "${WORKSPACE}\\${WAR_FILE}"
-                    
                     // Check if the WAR file exists before deploying
                     if (fileExists(warFilePath)) {
                         echo 'WAR file found, proceeding with deployment...'
@@ -43,7 +42,7 @@ pipeline {
                         bat """
                             curl --upload-file ${warFilePath} \
                             --user ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
-                            ${TOMCAT_URL}/manager/text/deploy?path=/rps&update=true
+                            ${TOMCAT_URL}/manager/text/deploy?path=/roshambo&update=true
                         """
                     } else {
                         error('WAR file not found! Build might have failed.')
