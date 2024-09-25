@@ -30,6 +30,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
+					//in this case it will be C:\ProgramData\Jenkins\.jenkins\workspace\war-depoy-jenkins-tomcat
                     def warFilePath = "${WORKSPACE}/${WAR_FILE}" // Use forward slashes in path
                     echo "WAR file path: ${warFilePath}"
                     
