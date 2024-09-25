@@ -56,7 +56,7 @@ pipeline {
     post {
         always {
             // Post-build actions
-            echo 'Build completed
+            echo 'Build completed'
 			}
     }
 }
