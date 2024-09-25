@@ -57,3 +57,6 @@ pipeline {
         always {
             // Post-build actions
             echo 'Build completed
+			}
+    }
+}
